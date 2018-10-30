@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <v-toolbar>
+    <v-toolbar style="opacity: 0"></v-toolbar>
+    <v-toolbar fixed ref="toolbar">
       <v-toolbar-side-icon class="hidden-md-and-up primary--text mr-3" @click="navDrawer =! navDrawer" />
       <div class="toolbar-icon-container">
         <img src="../public/assets/svg/ifsp-logo.svg" alt="IFSP Logo" class="toolbar-icon">
@@ -57,7 +58,8 @@ export default {
       navDrawer: false,
       menuItems: [
         { icon: 'mdi-home', title: 'Início', routeName: 'home' },
-        { icon: 'mdi-phone', title: 'Contato', routeName: 'contact' }
+        { icon: 'mdi-phone', title: 'Contato', routeName: 'contact' },
+        { icon: 'mdi-login-variant', title: 'Login', routeName: 'login' }
       ]
     }
   },
@@ -65,6 +67,9 @@ export default {
     goTo(routeName) {
       this.navDrawer = false
       this.$router.push({ name: routeName })
+    },
+    toolbarHeightChanged(event) {
+      console.log(event)
     }
   }
 };
@@ -74,9 +79,9 @@ export default {
 * {
   outline: none;
   user-select: none;
+  color: dimgray;
 }
 </style>
-
 
 <style lang="scss" scoped>
 .toolbar-icon-container {

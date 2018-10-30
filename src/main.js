@@ -1,4 +1,5 @@
 import '@mdi/font/css/materialdesignicons.css'
+import './style/app.scss'
 import Vue from 'vue'
 import store from './store'
 import './plugins/vuetify'

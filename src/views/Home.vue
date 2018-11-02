@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container class="root-container">
         <v-layout wrap>
             <v-flex md8 xs12 color="primary" pa-3>
                 <p class="title grey--text">Instituto Federal de Educação, Ciência e Tecnologia</p>

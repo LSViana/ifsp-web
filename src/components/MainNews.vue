@@ -18,59 +18,69 @@
                 </v-layout>
             </v-carousel-item>
         </v-carousel>
-        <div id="week-news">
-            <v-subheader class="mt-4 info--text">Destaques da Semana</v-subheader>
-            <v-layout style="height: 1px; opacity: .75" class="info mb-2"></v-layout>
-            <v-layout column>
-                <v-flex class="pa-2">
-                    <h3 class="title font-weight-medium">{{ firstWeekNews.title }}</h3>
-                    <p class="my-2">{{ firstWeekNews.subtitle }}</p>
-                </v-flex>
-                <v-divider class="mb-2" />
-                <v-flex>
-                    <v-layout row wrap>
-                        <v-flex
-                            v-for="(item) in threeFirstWeekNews"
-                            :key=" item.title"
-                            class="xs12 sm6 md4 pa-1 fluid-flex">
-                            <h4 class="font-weight-bold">{{ item.title }}</h4>
-                            <p class="my-2 caption">{{ item.subtitle }}</p>
-                        </v-flex>
-                    </v-layout>
-                </v-flex>
-            </v-layout>
-            <v-layout style="height: 1px; opacity: .75" class="info my-2"></v-layout>
-            <v-layout row justify-end>
-                <v-layout row align-center style="flex: unset">
-                    <p class="ma-0">Veja todas as notícias</p>
-                    <v-btn fab small color="info" class="btn-tiny">
-                        <v-icon>mdi-chevron-right</v-icon>
-                    </v-btn>
-                </v-layout>
-            </v-layout>
-        </div>
-        <div id="ifsp-community">
-            <v-subheader class="mt-4 secondary--text">Comunidade IFSP</v-subheader>
-            <v-layout style="height: 1px; opacity: .75" class="secondary mb-2"></v-layout>
-            <v-layout row wrap>
-                <v-flex
-                    v-for="item in communityNews"
-                    :key="item.title"
-                    class="xs12 sm6 md4 pa-1 fluid-flex">
-                    <h3 class="secondary--text body-2 mb-1 text-uppercase">{{ item.type }}</h3>
-                    <h4 class="font-weight-medium">{{ item.title }}</h4>
-                </v-flex>
-            </v-layout>
-            <v-layout style="height: 1px; opacity: .75" class="secondary my-2"></v-layout>
-            <v-layout row justify-end>
-                <v-layout row align-center style="flex: unset">
-                    <p class="ma-0">Acesse a lista completa</p>
-                    <v-btn fab small color="secondary" class="btn-tiny">
-                        <v-icon>mdi-chevron-right</v-icon>
-                    </v-btn>
-                </v-layout>
-            </v-layout>
-        </div>
+        <v-layout row wrap class="main-card-container my-3">
+            <v-flex sm12 md6>
+                <v-card :class="{ 'mr-2': vuetify.breakpoint.mdAndUp, 'mb-2': !vuetify.breakpoint.mdAndUp }">
+                    <v-card-title>
+                        <h2 class="info--text">Destaques da Semana</h2>
+                    </v-card-title>
+                    <v-card-text class="pa-0">
+                        <v-layout column>
+                            <template
+                                v-for="(item, i) in firstWeekNews">
+                                <v-flex
+                                    class="px-3"
+                                    :key=i>
+                                    <h3 class="title font-weight-medium">{{ item.title }}</h3>
+                                    <p class="mt-2 mb-0">{{ item.subtitle }}</p>
+                                </v-flex>
+                                <v-divider 
+                                    v-if="i != (firstWeekNews.length - 1)"
+                                    class="my-3"
+                                    :key="i+'-divider'" />
+                            </template>
+                        </v-layout>
+                    </v-card-text>
+                    <v-spacer></v-spacer>
+                    <v-card-actions class="justify-end">
+                        <!-- <v-spacer></v-spacer> -->
+                        <v-btn flat color="info">
+                            Veja mais notícias
+                        </v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-flex>
+            <v-flex sm12 md6>
+                <v-card :class="{ 'ml-2': vuetify.breakpoint.mdAndUp, 'mt-2': !vuetify.breakpoint.mdAndUp }">
+                    <v-card-title>
+                        <h2 class="secondary--text">Comunidade IFSP</h2>
+                    </v-card-title>
+                    <v-card-text class="pa-0">
+                        <v-layout column wrap>
+                            <template
+                                v-for="(item, i) in communityNews">
+                            <v-flex
+                                :key="item.title"
+                                class="xs12 sm6 md4 px-3 fluid-flex">
+                                <h3 class="secondary--text subheading font-weight-medium mb-1 text-uppercase">{{ item.type }}</h3>
+                                <h4 class="title font-weight-regular">{{ item.title }}</h4>
+                            </v-flex>
+                            <v-divider 
+                                    v-if="i != (communityNews.length - 1)"
+                                    class="my-3"
+                                    :key="i+'-divider'" />
+                            </template>
+                        </v-layout>
+                    </v-card-text>
+                    <v-spacer></v-spacer>
+                    <v-card-actions class="justify-end">
+                        <v-btn flat color="secondary">
+                            Acesse a lista completa
+                        </v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-flex>
+        </v-layout>
     </v-layout>
 </template>
 
@@ -139,14 +149,23 @@ export default {
   },
   computed: {
     firstWeekNews() {
-      return this.weekNews[0];
+      return this.weekNews.slice(0, 3);
     },
-    threeFirstWeekNews() {
-      return this.weekNews.slice(1, 4);
-    }
+    vuetify() { return this.$vuetify }
   }
 };
 </script>
 
-<style>
+<style lang="scss">
+.main-card-container {
+  > .flex {
+    display: flex;
+    > .v-card {
+      flex-grow: 1;
+      display: flex;
+      flex-flow: column nowrap;
+    }
+  }
+}
 </style>
+

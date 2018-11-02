@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-toolbar style="opacity: 0"></v-toolbar>
-    <v-toolbar fixed ref="toolbar">
+    <v-toolbar fixed ref="toolbar" color="white" :class="{ 'elevation-0': scrollY <= 10, 'elevation-3': scrollY >= 10 }">
       <v-toolbar-side-icon class="hidden-md-and-up primary--text mr-3" @click="navDrawer =! navDrawer" />
       <div class="toolbar-icon-container">
         <img src="../public/assets/svg/ifsp-logo.svg" alt="IFSP Logo" class="toolbar-icon">
@@ -53,9 +53,15 @@
 <script>
 export default {
   name: "App",
+  mounted() {
+    window.addEventListener("scroll", (ev) => {
+      this.scrollY = window.scrollY;
+    });
+  },
   data() {
     return {
       navDrawer: false,
+      scrollY: 0,
       menuItems: [
         { icon: 'mdi-home', title: 'Início', routeName: 'home' },
         { icon: 'mdi-phone', title: 'Contato', routeName: 'contact' },

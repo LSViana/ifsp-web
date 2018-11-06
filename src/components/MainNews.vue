@@ -63,7 +63,7 @@
                                 :key="item.title"
                                 class="xs12 sm6 md4 px-3 fluid-flex">
                                 <h3 class="secondary--text subheading font-weight-medium mb-1 text-uppercase">{{ item.type }}</h3>
-                                <h4 class="title font-weight-regular">{{ item.title }}</h4>
+                                <h4 class="title font-weight-medium">{{ item.title }}</h4>
                             </v-flex>
                             <v-divider 
                                     v-if="i != (communityNews.length - 1)"

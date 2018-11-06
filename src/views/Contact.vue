@@ -23,7 +23,9 @@
                         <v-layout column>
                             <v-flex v-for="telephone in item.telephones"
                                     :key="telephone">
-                                <p class="ma-1 title text-xs-center font-weight-medium primary--text">{{ telephone }}</p>
+                                <address>
+                                    <p class="ma-1 title text-xs-center font-weight-medium primary--text">{{ telephone }}</p>
+                                </address>
                             </v-flex>
                         </v-layout>
                     </v-card-text>
@@ -31,12 +33,14 @@
                         <v-layout column>
                             <h5 class="body-2 mt-2 font-weight-bold">E-mail</h5>
                             <v-layout row justify-end>
-                                <a :href="`mailto:${item.email}`">
-                                    <v-btn color="primary--text" class="font-weight-bold">
-                                        Enviar
-                                        <v-icon class="pl-2">mdi-at</v-icon>
-                                    </v-btn>
-                                </a>
+                                <address>
+                                    <a :href="`mailto:${item.email}`">
+                                        <v-btn color="primary--text" class="font-weight-bold">
+                                            Enviar
+                                            <v-icon class="pl-2">mdi-at</v-icon>
+                                        </v-btn>
+                                    </a>
+                                </address>
                             </v-layout>
                         </v-layout>
                     </v-card-actions>

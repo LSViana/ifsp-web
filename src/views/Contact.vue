@@ -1,50 +1,57 @@
 <template>
-    <v-container>
-        <v-layout column class="px-2">
-            <h1 class="display-2 primary--text">Contato com o IFSP</h1>
-            <v-subheader class="pl-0 subheading font-weight-medium">
-                Para conhecer os telefones dos setores, utilize a lista de ramais a seguir.
-            </v-subheader>
-        </v-layout>
+    <v-container class="root-container">
         <v-layout row wrap>
-            <v-flex xs12 sm6 md4 lg3
-                class="d-flex"
-                v-for="item in branches"
-                :key="item.id">
-                <v-card class="elevation-8 ma-2 contact-card">
-                    <v-card-title>
-                        <h2 class="title primary--text font-weight-bold" style="line-height: 30px !important">{{ item.title }}</h2>
-                    </v-card-title>
-                    <v-card-text class="py-0" style="flex-grow: 1">
-                        <p class="ma-0 pb-2">{{ item.description }}</p>
-                    </v-card-text>
-                    <v-card-text class="pt-0">
-                        <h5 class="body-2 mt-2 pb-2 font-weight-bold">Telefones da Secretaria</h5>
-                        <v-layout column>
-                            <v-flex v-for="telephone in item.telephones"
-                                    :key="telephone">
-                                <address>
-                                    <p class="ma-1 title text-xs-center font-weight-medium primary--text">{{ telephone }}</p>
-                                </address>
-                            </v-flex>
-                        </v-layout>
-                    </v-card-text>
-                    <v-card-actions class="px-3 pt-0 pb-3" v-if="item.email">
-                        <v-layout column>
-                            <h5 class="body-2 mt-2 font-weight-bold">E-mail</h5>
-                            <v-layout row justify-end>
-                                <address>
-                                    <a :href="`mailto:${item.email}`">
-                                        <v-btn color="primary--text" class="font-weight-bold">
-                                            Enviar
-                                            <v-icon class="pl-2">mdi-at</v-icon>
-                                        </v-btn>
-                                    </a>
-                                </address>
-                            </v-layout>
-                        </v-layout>
-                    </v-card-actions>
-                </v-card>
+            <v-flex xs12 md3>
+                <quick-menu></quick-menu>
+            </v-flex>
+            <v-flex xs12 md9>
+                <v-layout column class="px-2">
+                    <h1 class="display-2 primary--text mb-2">Contato com o IFSP</h1>
+                    <p class="pl-0 subheading font-weight-medium">
+                        Para conhecer os telefones dos setores, utilize a lista de ramais a seguir. 
+                    </p>
+                </v-layout>
+                <v-layout row wrap>
+                    <v-flex xs12 sm6 md4 lg3
+                        class="d-flex"
+                        v-for="item in branches"
+                        :key="item.id">
+                        <v-card class="elevation-8 ma-2 contact-card">
+                            <v-card-title>
+                                <h2 class="title primary--text font-weight-bold" style="line-height: 30px !important">{{ item.title }}</h2>
+                            </v-card-title>
+                            <v-card-text class="py-0" style="flex-grow: 1">
+                                <p class="ma-0 pb-2">{{ item.description }}</p>
+                            </v-card-text>
+                            <v-card-text class="pt-0">
+                                <h5 class="body-2 mt-2 pb-2 font-weight-bold">Telefones da Secretaria</h5>
+                                <v-layout column>
+                                    <v-flex v-for="telephone in item.telephones"
+                                            :key="telephone">
+                                        <address>
+                                            <p class="ma-1 title text-xs-center font-weight-medium primary--text">{{ telephone }}</p>
+                                        </address>
+                                    </v-flex>
+                                </v-layout>
+                            </v-card-text>
+                            <v-card-actions class="px-3 pt-0 pb-3" v-if="item.email">
+                                <v-layout column>
+                                    <h5 class="body-2 mt-2 font-weight-bold">E-mail</h5>
+                                    <v-layout row justify-end>
+                                        <address>
+                                            <a :href="`mailto:${item.email}`">
+                                                <v-btn color="primary--text" class="font-weight-bold">
+                                                    Enviar
+                                                    <v-icon class="pl-2">mdi-at</v-icon>
+                                                </v-btn>
+                                            </a>
+                                        </address>
+                                    </v-layout>
+                                </v-layout>
+                            </v-card-actions>
+                        </v-card>
+                    </v-flex>
+                </v-layout>
             </v-flex>
         </v-layout>
     </v-container>

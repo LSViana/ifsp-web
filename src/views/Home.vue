@@ -100,10 +100,4 @@ export default {
     font-size: 1rem !important;
   }
 }
-
-@media only screen and (min-width: 1264px) {
-    .root-container {
-        max-width: 80vw;
-    }
-}
 </style>

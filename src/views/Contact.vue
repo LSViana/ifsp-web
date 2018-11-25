@@ -16,7 +16,7 @@
                         class="d-flex"
                         v-for="item in branches"
                         :key="item.id">
-                        <v-card class="elevation-8 ma-2 contact-card">
+                        <v-card class="elevation-4 ma-2 contact-card">
                             <v-card-title>
                                 <h2 class="title primary--text font-weight-bold" style="line-height: 30px !important">{{ item.title }}</h2>
                             </v-card-title>

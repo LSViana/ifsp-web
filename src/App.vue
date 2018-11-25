@@ -54,7 +54,7 @@
 export default {
   name: "App",
   mounted() {
-    window.addEventListener("scroll", (ev) => {
+    window.addEventListener("scroll", () => {
       this.scrollY = window.scrollY;
     });
   },
@@ -73,9 +73,6 @@ export default {
     goTo(routeName) {
       this.navDrawer = false
       this.$router.push({ name: routeName })
-    },
-    toolbarHeightChanged(event) {
-      console.log(event)
     }
   }
 };

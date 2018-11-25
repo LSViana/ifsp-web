@@ -1,6 +1,6 @@
 <template>
    <div id="root" class="container">
-       <h2>Boletim</h2> 
+       <h2>Boletim Ano 1</h2> 
        <v-card class="mt-3">
            <v-data-table
                 :headers="bimestres"
@@ -27,7 +27,7 @@ export default {
 
             bimestres:[
                 {
-                    text: 'Mateiras',
+                    text: 'Materias',
                     align:'left',
                     sortable: false,
                     value: 'name'
@@ -91,5 +91,7 @@ export default {
 </script>
 
 <style>
-
+thead tr{
+    background-color: #03ca59;
+}
 </style>

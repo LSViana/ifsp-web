@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Contact from './views/Contact.vue'
 import Login from './views/Login.vue'
 import StudentDashboard from './views/StudentDashboard.vue'
+import TechnicalCourses from './views/TechnicalCourses.vue'
 
 Vue.use(Router)
 
@@ -30,6 +31,12 @@ export default new Router({
       path: '/student',
       name: 'student',
       component: StudentDashboard
-    }
+    },
+    {
+      path: '/technicalcourses',
+      name: 'technicalcourses',
+      component: TechnicalCourses
+    },
+
   ]
 })
